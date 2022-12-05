@@ -1,0 +1,141 @@
+<header class="fixed-top header">
+    <div class="icon-bar">
+      <a routerLink="#" class="facebook"><i class="fa fa-facebook"></i></a>
+      <a routerLink="#" class="twitter"><i class="fa fa-twitter"></i></a>
+      <a routerLink="#" class="google"><i class="fa fa-google"></i></a>
+      <a routerLink="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+      <a routerLink="#" class="youtube"><i class="fa fa-youtube"></i></a>
+    </div>
+    <!-- top header -->
+    <div class="top-header py-2 bg-white">
+      <div class="container ">
+        <div class="row no-gutters">
+          <div class="col-lg-4 text-center text-lg-left">
+            <a class="text-color mr-3" href="callto:+443003030266"><strong>CALL</strong> +91
+              956-476-6686</a>
+            <ul class="list-inline d-inline">
+              <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" routerLink="#"><i
+                    class="ti-facebook"></i></a></li>
+              <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" routerLink="#"><i
+                    class="ti-twitter-alt"></i></a></li>
+              <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" routerLink="#"><i
+                    class="ti-linkedin"></i></a></li>
+              <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" routerLink="#"><i
+                    class="ti-instagram"></i></a></li>
+            </ul>
+          </div>
+          <div class="col-lg-8 text-center text-lg-right">
+            <ul class="list-inline" *ngIf="!logged()">
+              <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block"
+                  routerLink="login">login</a></li>
+              <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block"
+                  routerLink="register">register</a></li>
+            </ul>
+            <ul *ngIf="logged()">
+              <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block"
+               >{{userData.data.firstName}}</a></li>
+              <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block"
+               (click)="logout()">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- navbar -->
+    <div class="navigation w-100">
+      <div class="container container_1">
+        <nav class="navbar navbar-expand-lg navbar-light p-0">
+          <a class="navbar-brand" routerLink="home"><img src="../assets/images/Website_Logo.png" alt="logo"
+              style="width: 11rem;"></a>
+          <button class="navbar-toggler rounded-0" type="button" data-toggle="collapse" data-target="#navigation"
+            aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ml-auto text-center">
+              <li class="nav-item @@about">
+                <a class="nav-link" routerLink="admin/user">Uploads</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" routerLink="home" >Home</a>
+              </li>
+              <li class="nav-item @@about">
+                <a class="nav-link" routerLink="about">About Us</a>
+              </li>
+              <li class="dropdown nav-item @@about">
+                <a class="nav-link" routerLink="#">SERVICES <i class="dropdown-toggle"></i></a>
+                <ul class="navbar-nav ml-auto text-center">
+  
+                  <li class="dropdown">
+                    <a routerLink="#">
+                      <span calss="navbar-expand-lg">Individual Services
+                        <img src="https://img.icons8.com/ios-filled/13/000000/forward--v1.png"
+                          style="padding-left:1rem;" />
+                      </span> <i class="bi bi-chevron-right"></i></a>
+                    <ul>
+                      <li><a routerLink="#">Tax planning and advisory services</a></li>
+                      <li><a routerLink="#">Tax preparation and e-filing service</a></li>
+                      <li><a routerLink="#">Federal,state,city and county tax filing</a></li>
+                      <li><a routerLink="#">Extension filing</a></li>
+                      <li><a routerLink="#">ITIN processing</a></li>
+                      <li><a routerLink="#">IRS Audit representation</a></li>
+                      <li><a routerLink="#">FBAR and FATCA processing</a></li>
+                      <li><a routerLink="#">Revising last three year Returns</a></li>
+                      <li><a routerLink="#">Amendments</a></li>
+                      <li><a routerLink="#">W-4 Assistance</a></li>
+                      <li><a routerLink="#">Reporting schedules, income and expenses</a></li>
+                      <li><a routerLink="#">ITEMIZED or standard deduction</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a routerLink="#"><span calss="navbar-expand-lg">Business Services <img
+                          src="https://img.icons8.com/ios-filled/13/000000/forward--v1.png"
+                          style="padding-left:1rem;" /></span> <i class="bi bi-chevron-right"></i></a>
+                    <ul>
+                      <li><a routerLink="#">Business Tax Filing</a></li>
+                      <li><a routerLink="#">Pay roll</a></li>
+                      <li><a routerLink="#">Book keeping</a></li>
+                      <li><a routerLink="#">Annual reporting</a></li>
+                      <li><a routerLink="#">Merchant payment services</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item @@about">
+                <a class="nav-link" routerLink="taxfiling">Indian tax filing</a>
+              </li>
+              <!--<li class="nav-item @@events">
+                <a class="nav-link" routerLink="blog">Blog</a>
+              </li>-->
+              <!--<li class="nav-item @@events">
+                <a class="nav-link" routerLink="datasecurity">Data Security</a>
+              </li>-->
+              <!--<li class="nav-item @@events ">
+                <a class="nav-link" routerLink="pricing">Pricing</a>
+              </li>-->
+              <li class="nav-item @@blog">
+                <a class="nav-link" routerLink="contact">Contact Us</a>
+              </li>
+  
+            </ul>
+          </div>
+        </nav>
+
+
+      </div>
+    </div>
+  </header>
+
+
+
+<script>
+  $('#myDropdown').on('hide.bs.dropdown', function () {
+    return false;
+  });
+  $('#myDropdown .dropdown-menu').on({
+    "click": function (e) {
+      e.stopPropagation();
+    }
+  });
+</script>

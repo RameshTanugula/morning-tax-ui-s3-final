@@ -1,0 +1,25 @@
+<div style="margin-top:20% ;">
+  <a href="https://morningtax.s3.amazonaws.com/1vdk3so14klbb0k6hk__a-beautiful-spring-day-wallpaper-preview.jpg" download="reporte.txt">
+    <strong>Descargar</strong>
+    </a>
+    <table>
+        <tr>
+          <th>S.no</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Download</th>
+        </tr>
+        <tr *ngFor="let user of usersData;let i=index">
+            <td>{{i+1}}</td>
+          <td>{{user.first_name}}</td>
+          <td>{{user.last_name}}</td>
+          <td><select (change)="onClickFile($event)">
+            <option value="">Files</option>
+            <option *ngFor="let file of user.filesList" value={{file}}>{{file}}</option>
+          </select></td>
+          <!-- <td><button (click)="download(user)">Download files</button></td> -->
+          
+        </tr>
+      </table>
+      
+</div>

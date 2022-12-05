@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+  <div class="container" style="padding-top:23rem;">
+    <div class="row">
+    
+
+      <div class="container">
+
+        <!--<ul class="nav nav-pills">
+          <li class="active"><a data-toggle="pill" href="#home">Service Type</a></li>
+          <li><a data-toggle="pill" href="#menu1">Service</a></li>
+          <li><a data-toggle="pill" href="#menu2">Provide Details</a></li>
+        </ul>-->
+
+        <div class="tab-content">
+
+          <div id="home" class="tab-pane fade in active">
+           <div class="tab_heading">SELECT YOUR SERVICE TYPE</div>
+            <div class="tab-pane active" role="tabpanel" id="step1">
+              <input type="radio" name="emotion"
+                     id="sad" class="input-hidden" />
+              <label for="sad" (click)="onClickServiceType('Individual Services')">
+                <div class="card_heading">Individual Services </div>
+                <img src="../assets/images/image___1.jpg" alt="I'm sad" />
+
+              </label>
+
+
+
+              <input type="radio" name="emotion"
+                     id="happy" class="input-hidden" />
+              <label for="happy" (click)="onClickServiceType('Business Services')">
+                <div class="card_heading">Business Services</div>
+                <img src="../assets/images/image___2.jpg" alt="I'm happy" />
+              </label>
+              <br />
+              <!--<button type="button" class="btn btn-primary_1 next-step" id="n-btn1">Save and continue</button>-->
+            </div>
+            <div>
+              <ul class="nav nav-pills">
+              <li class="active"><a data-toggle="pill" href="#menu1">Next</a></li>
+            </ul>
+            </div>
+            
+          </div>
+          <div id="menu1" class="tab-pane fade">
+            <div class="tab_heading">SELECT YOUR SERVICE</div>
+            <div class="list_div">
+
+              <ul class="padding_l_0 navlist" style="padding-left: 0;">
+                <li *ngFor="let item of services; let i=index" class="li_active" [style.background-color]="item.checked ? 'red' :'blue'" (click)="onClickService(item, i)">{{item.label}}</li>
+                <!-- <li>Tax preparation and e-filing service</li>
+                <li>Federal,state,city and county tax filing</li>
+                <br />
+                <li>Extension filing</li>
+                <li>IRS Audit representation</li>
+                <li>FBAR and FATCA processing</li>
+                <li>Revising last three year Returns</li>
+                <li>Amendments</li>
+                <br />
+                <li>W-4 Assistance</li>
+                <li>Reporting schedules, income and expenses</li>
+                <li>ITEMIZED or standard deduction</li> -->
+              </ul>
+              <br /><br />
+              <div><span style="color:red;"> * </span>Please do not create Duplicate tickets for the same filing years.</div>
+            </div>
+            <br />
+            <div>
+              <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#home">Previous</a></li>
+                <li class="active"><a data-toggle="pill" href="#menu2">Next</a></li>
+              </ul>
+            </div>
+           
+          </div>
+          <div id="menu2" class="tab-pane fade">
+            <div class="tab_heading">Provide Details</div>
+            <div class="row">
+              <div class="col-md-6">
+                <form action="index.html" method="post">
+                  <br />
+                  <label for="job">Year *</label>
+                  <select id="job" (change)="onYearChange($event)" name="user_job">
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                  </select>
+                  <fieldset>
+                    <label for="bio">Description *</label>
+                    <textarea   id="bio" name="user_bio" (change)="onDescChange($event)" placeholder="Description"></textarea>
+                  </fieldset>
+                  <fieldset>
+                    <label for="name">Mobile Number</label>
+                    <input type="text" id="name" (change)="onMobileNumberChange($event)" name="user_name" placeholder="Mobile Number">
+                  </fieldset>
+                  <div class="file-upload">
+                    <div class="file-select">
+                      <div class="file-select-button" id="fileName">Choose File</div>
+                      <div class="file-select-name" id="noFile">No file chosen...</div>
+                      <!-- <input type="file" name="chooseFile" id="chooseFile"> -->
+                      <input type="file" multiple (change)="fileChange($event)" placeholder="Upload file" >
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-6">
+                <img src="assets/images/image.svg" style="width:100%;padding:5rem;" />
+              </div>
+            </div>
+            <br />
+            <ul class="nav nav-pills">
+              <li class="active"><a data-toggle="pill" href="#menu1">Previous</a></li>
+              <li class="active"><a data-toggle="pill" (click)="onSubmit()" href="#menu2">Submit</a></li>
+            </ul>
+          </div>
+         
+        </div>
+      </div>
+
+      <section>
+
+        <!--<ul class="nav nav-tabs" id="myTab" role="tablist">
+
+          <li role="presentation" class="nav-item">
+            <a href="#step1" class="nav-link active" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">Service Type</a>
+          </li>
+
+          <li role="presentation" class="nav-item">
+            <a href="#step2" class="nav-link" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">Service</a>
+          </li>
+          <li role="presentation" class="nav-item">
+            <a href="#complete" class="nav-link" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">Provide Details</a>
+          </li>
+        </ul>-->
+
+        <form role="form">
+          <div class="tab-content">
+            <!--<div class="tab-pane active" role="tabpanel" id="step1">
+              <input type="radio" name="emotion"
+                     id="sad" class="input-hidden" />
+              <label for="sad">
+                <div class="card_heading">Business Services</div>
+                <img src="../assets/images/image___1.jpg" alt="I'm sad" />
+
+              </label>
+
+
+
+              <input type="radio" name="emotion"
+                     id="happy" class="input-hidden" />
+              <label for="happy">
+                <div class="card_heading">Business Services</div>
+                <img src="../assets/images/image___2.jpg" alt="I'm happy" />
+              </label>
+              <br />
+              <button type="button" class="btn btn-primary_1 next-step" id="n-btn1">Save and continue</button>
+            </div>-->
+            <div class="tab-pane" role="tabpanel" id="step2">
+              <!--<div class="list_div">
+
+                <ul class="padding_l_0 navlist" style="padding-left: 0;">
+                  <li class="li_active">Tax planning and advisory services</li>
+                  <li>Tax preparation and e-filing service</li>
+                  <li>Federal,state,city and county tax filing</li>
+                  <br />
+                  <li>Extension filing</li>
+                  <li>IRS Audit representation</li>
+                  <li>FBAR and FATCA processing</li>
+                  <li>Revising last three year Returns</li>
+                  <li>Amendments</li>
+                  <br />
+                  <li>W-4 Assistance</li>
+                  <li>Reporting schedules, income and expenses</li>
+                  <li>ITEMIZED or standard deduction</li>
+                </ul>
+                <br /><br />
+                <div><span style="color:red;"> * </span>Please do not create Duplicate tickets for the same filing years.</div>
+              </div>-->
+              <br />
+              <!--<button type="button" class="btn btn-default_1 prev-step" id="p-btn1">Previous</button>
+
+              <button type="button" class="btn btn-primary_1 next-step" id="n-btn2">Save and continue</button>-->
+            </div>
+            <br />
+            <div class="tab-pane" role="tabpanel" id="complete">
+
+              <!--<div class="row">
+                <div class="col-md-6">
+                  <form action="index.html" method="post">
+                    <label for="job">Year *</label>
+                    <select id="job" name="user_job">
+                      <option value="2011">2011</option>
+                      <option value="2012">2012</option>
+                      <option value="2013">2013</option>
+                      <option value="2014">2014</option>
+                      <option value="2015">2015</option>
+                      <option value="2016">2016</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                    </select>
+                    <fieldset>
+                      <label for="bio">Description *</label>
+                      <textarea id="bio" name="user_bio" placeholder="Description"></textarea>
+                    </fieldset>
+                    <fieldset>
+                      <label for="name">Mobile Number</label>
+                      <input type="text" id="name" name="user_name" placeholder="Mobile Number">
+                    </fieldset>
+                    <div class="file-upload">
+                      <div class="file-select">
+                        <div class="file-select-button" id="fileName">Choose File</div>
+                        <div class="file-select-name" id="noFile">No file chosen...</div>
+                        <input type="file" name="chooseFile" id="chooseFile">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-md-6">
+                  <img src="assets/images/image.svg" style="width:100%;padding:5rem;" />
+                </div>
+              </div>-->
+              <br /><br />
+
+              <!--<button type="button" class="btn btn-default_1 prev-step" id="p-btn2">Previous</button>
+
+              <button type="button" class="btn btn-primary_1 next-step" id="n-btn3">Save and continue</button>-->
+              <br /><br />
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+<script>
+
+
+  // Add active class to the current button (highlight it)
+  var header = document.getElementById("navlist");
+  var btns = header.getElementsByClassName("navlist");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+      var current = document.getElementsByClassName("li_active");
+      current[0].className = current[0].className.replace("li_active", "");
+      this.className += "li_active";
+    });
+  }
+
+
+  $("#n-btn1").click(function () {
+    $('#myTab li:nth-child(2) a').tab('show');
+  });
+  $("#n-btn2").click(function () {
+    $('#myTab li:nth-child(3) a').tab('show');
+  });
+  $("#n-btn3").click(function () {
+    $('#myTab li:nth-child(4) a').tab('show');
+  });
+
+  $("#p-btn1").click(function () {
+    $('#myTab li:nth-child(1) a').tab('show');
+  });
+  $("#p-btn2").click(function () {
+    $('#myTab li:nth-child(2) a').tab('show');
+  });
+
+</script>
+
